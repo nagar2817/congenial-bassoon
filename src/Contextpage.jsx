@@ -10,7 +10,7 @@ import API_URL from "./constant";
 
 export function MovieProvider({ children }) {
 
-  const [header, setHeader] = useState("Trending");
+  const [header, setHeader] = useState("Movies");
   const [totalPage, setTotalPage] = useState(null)
   const [movies, setMovies] = useState([]);
   const [searchedMovies, setSearchedMovies] = useState([]);
