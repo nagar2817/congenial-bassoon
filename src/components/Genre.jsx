@@ -3,18 +3,18 @@ import Contextpage from '../Contextpage';
 import {Helmet} from "react-helmet";
 
 function Genre() {
-    const { fetchGenre, activegenre, setActiveGenre, genres, setMovies, page, setPage, filteredGenre } = useContext(Contextpage);    
+    const { fetchGenre, activegenre, setActiveGenre, genres, setMovies, page, setPage, filteredGenre,activeUserId } = useContext(Contextpage);    
 
 
     useEffect(() => {
         fetchGenre();  
-    }, [])
+    }, [activegenre,activeUserId]);
 
 
     return (
         <>
         <Helmet>
-            <title>BlueBird Movies | Genres</title>
+            <title>Movie Zone | Genres</title>
         </Helmet>
 
         <div className='flex flex-wrap justify-center px-2'>

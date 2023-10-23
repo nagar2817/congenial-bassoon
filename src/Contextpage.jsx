@@ -64,7 +64,7 @@ export function MovieProvider({ children }) {
   }
 
   const fetchGenre = async () => {
-    const res = await axios.get('${API_URL}/moviesgenres/genres')
+    const res = await axios.get(`${API_URL}/moviesgenres/genres`)
     const gen = await res.data.data;
     // console.log(gen);
     setGenres(gen);
@@ -109,7 +109,7 @@ export function MovieProvider({ children }) {
     
     } catch (err) {
       console.log(err)
-      toast.success("Login failed");
+      toast.error("Login failed");
       navigate("/")
     }
   }

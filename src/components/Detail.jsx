@@ -16,8 +16,6 @@ import API_URL from '../constant';
 
 export const Detail = () => {
 
-  const APIKEY = import.meta.env.VITE_API_KEY;
-
   const { loader, setLoader ,activeUserId} = useContext(Contextpage);
 
   const { id } = useParams()
@@ -50,7 +48,7 @@ export const Detail = () => {
   const fetchMovie = async () => {
     let movieGenre = [];
     const data = await axios.get(`${API_URL}/getSinglemovie/${id}`);
-    const res1 = await axios.get("${API_URL}/moviesgenres/genres");
+    const res1 = await axios.get(`${API_URL}/moviesgenres/genres`);
     const user_rating = await axios.get(`${API_URL}/userrating/${activeUserId}/${id}`);
     console.log(user_rating.data.rating);
     setUserRating(user_rating.data.rating);
@@ -70,7 +68,7 @@ export const Detail = () => {
     }else{
         setIsAddedToWatched(false);
     }
-    // console.log(moviedetail);
+    console.log(moviedet);
     setMoviegenres(movieGenre);
     setLoader(false);
   };
@@ -136,10 +134,10 @@ export const Detail = () => {
 
             {/* tag */}
             <div className='flex justify-center flex-wrap'>
-              {moviegenres.map((tag,index) => (
-                <>
-                  <div key={index} className='text-white font-semibold bg-gray-800 rounded-full px-4 py-1 m-2'>{tag.name}</div>
-                </>
+              {moviegenres.map((tag) => (
+                <div key={tag.id}>
+                  <div key={tag.id} className='text-white font-semibold bg-gray-800 rounded-full px-4 py-1 m-2'>{tag.name}</div>
+                </div>
               ))}
             </div>
          
